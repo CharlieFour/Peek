@@ -1,0 +1,37 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:38:49.3988639+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:38:50.0511568+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:38:53.0331382+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:38:53.1111387+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:39:05.9341435+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "opera - Peek | Supabase Procs | Supabase - Opera"
+    }
+]

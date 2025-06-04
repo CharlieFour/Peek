@@ -1,0 +1,23 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:01:25.5337901+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:01:26.4739652+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:02:04.0040769+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "opera - Claude - Opera"
+    }
+]

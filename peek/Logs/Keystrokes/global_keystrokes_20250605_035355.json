@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:51.6025204+05:00",
+        "key_code":  70,
+        "key_pressed":  "F",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:51.9885232+05:00",
+        "key_code":  71,
+        "key_pressed":  "G",
+        "window_title":  "ApplicationFrameHost - Feedback Hub"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:52.0575184+05:00",
+        "key_code":  71,
+        "key_pressed":  "G",
+        "window_title":  "ApplicationFrameHost - Feedback Hub"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:52.1265207+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "ApplicationFrameHost - Feedback Hub"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:52.1965449+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "ApplicationFrameHost - Feedback Hub"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:52.2645193+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "ApplicationFrameHost - Feedback Hub"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:52.2655182+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "ApplicationFrameHost - Feedback Hub"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:52.3405252+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "ApplicationFrameHost - Feedback Hub"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:55.1555255+05:00",
+        "key_code":  70,
+        "key_pressed":  "F",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:53:55.2275195+05:00",
+        "key_code":  70,
+        "key_pressed":  "F",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    }
+]

@@ -1,0 +1,30 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:45:59.2385854+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - "
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:46:22.5242415+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "opera - Device Info Database Updater - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:46:22.5982522+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "opera - Device Info Database Updater - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:46:31.2751481+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - "
+    }
+]

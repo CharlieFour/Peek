@@ -1,0 +1,16 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:42:38.2603574+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:45:06.5752323+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "opera - Device Info Database Updater - Claude - Opera"
+    }
+]

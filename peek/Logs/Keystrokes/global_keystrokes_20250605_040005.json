@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:59:45.5636345+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:59:58.8126606+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Remix of Device Info Updater - Code Changes - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:00:00.2101265+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:00:01.8826555+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Device Info Script Update - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:00:04.6982930+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:00:04.7722959+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:00:05.1432965+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - PEEK: Enhanced Activity Monitor - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:00:05.3812912+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - PEEK: Enhanced Activity Monitor - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:00:05.4482916+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - PEEK: Enhanced Activity Monitor - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T04:00:05.6832912+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Peek - Opera"
+    }
+]
