@@ -1,0 +1,3 @@
+﻿=== SESSION BUFFER (Length: 20) ===
+	hhelloo mSYY ilyyaa
+=== END BUFFER ===

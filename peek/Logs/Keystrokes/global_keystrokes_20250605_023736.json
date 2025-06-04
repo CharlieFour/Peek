@@ -1,0 +1,23 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:36:54.7833821+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - "
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:37:03.3530100+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "chrome - PowerShell Keylogger Reliability Issue - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:37:36.2710661+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "chrome - PowerShell Keylogger Reliability Issue - Claude - Google Chrome"
+    }
+]

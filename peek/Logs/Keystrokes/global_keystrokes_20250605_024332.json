@@ -1,0 +1,58 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:42:32.4467869+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Remix of Encapsulated Enhanced Keylogger Functions - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:42:32.8747672+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - Remix of Encapsulated Enhanced Keylogger Functions - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:42:32.9537622+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - Remix of Encapsulated Enhanced Keylogger Functions - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:42:45.9507755+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "chrome - Remix of Encapsulated Enhanced Keylogger Functions - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:42:46.7727614+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:42:47.0437608+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:42:47.6277601+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:43:32.7599205+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "Spotify - DJ X - Welcome"
+    }
+]

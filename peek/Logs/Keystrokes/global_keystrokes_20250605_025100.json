@@ -1,0 +1,37 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:50:15.4239455+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - Remix of Encapsulated Enhanced Keylogger Functions - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:50:16.1657770+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "chrome - Remix of Encapsulated Enhanced Keylogger Functions - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:50:19.6628394+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:50:29.5959083+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:51:00.1078410+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "chrome - Remix of Encapsulated Enhanced Keylogger Functions - Claude - Google Chrome"
+    }
+]

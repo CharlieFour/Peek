@@ -1,0 +1,37 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:26:40.5812317+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:26:40.6462493+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:26:43.4791958+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:26:43.6591975+05:00",
+        "key_code":  76,
+        "key_pressed":  "L",
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:26:44.2281954+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "opera - Speed Dial - Opera"
+    }
+]

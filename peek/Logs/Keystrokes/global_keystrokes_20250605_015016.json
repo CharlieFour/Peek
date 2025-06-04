@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:14.6874693+05:00",
+        "key_code":  78,
+        "key_pressed":  "N",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:15.4985323+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:15.6303693+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:15.8334487+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:15.9002129+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:15.9685635+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:16.0363416+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:16.5141355+05:00",
+        "key_code":  85,
+        "key_pressed":  "U",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:16.7176978+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:50:16.9961425+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    }
+]

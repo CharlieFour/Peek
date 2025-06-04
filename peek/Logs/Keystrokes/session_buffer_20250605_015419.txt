@@ -1,0 +1,3 @@
+﻿=== SESSION BUFFER (Length: 60) ===
+[TAB]illya ismhhiich is yer iin th[ENTER][ENTER]cs22[TAB]sst
+=== END BUFFER ===

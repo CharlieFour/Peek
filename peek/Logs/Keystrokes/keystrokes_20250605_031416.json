@@ -1,0 +1,72 @@
+﻿[
+    {
+        "key_pressed":  "ALT",
+        "processed_key":  "[ALT]",
+        "timestamp":  "2025-06-05T03:14:12.1978860+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  true,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  18,
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "key_pressed":  "TAB",
+        "processed_key":  "\t",
+        "timestamp":  "2025-06-05T03:14:12.3731177+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  true,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  9,
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "key_pressed":  "M",
+        "processed_key":  "m",
+        "timestamp":  "2025-06-05T03:14:15.0456996+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  77,
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "key_pressed":  "Y",
+        "processed_key":  "y",
+        "timestamp":  "2025-06-05T03:14:15.9941348+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  89,
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "key_pressed":  "SPACE",
+        "processed_key":  " ",
+        "timestamp":  "2025-06-05T03:14:16.4389385+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  32,
+        "window_title":  "opera - Peek - Opera"
+    }
+]

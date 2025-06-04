@@ -1,0 +1,44 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:47:20.4087245+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:47:20.4827231+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:47:43.5988058+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Fixed PowerShell Keylogger Script | Claude | Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:47:43.6658137+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Fixed PowerShell Keylogger Script | Claude | Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:47:44.0724869+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - Fixed PowerShell Keylogger Script | Claude | Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:47:59.6361843+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "chrome - Remix of Encapsulated Enhanced Keylogger Functions - Claude - Google Chrome"
+    }
+]

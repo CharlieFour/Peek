@@ -1,0 +1,58 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:07:37.6673097+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:07:40.7652686+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:07:40.8332541+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:07:50.7052958+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:07:53.1710886+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:07:54.6310897+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:07:57.7920618+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:08:24.8553237+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    }
+]

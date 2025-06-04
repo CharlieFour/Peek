@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:04.1802113+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:04.9122111+05:00",
+        "key_code":  77,
+        "key_pressed":  "M",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:05.4792114+05:00",
+        "key_code":  79,
+        "key_pressed":  "O",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:06.8662223+05:00",
+        "key_code":  78,
+        "key_pressed":  "N",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:07.0432048+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:07.2222064+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:07.4062157+05:00",
+        "key_code":  89,
+        "key_pressed":  "Y",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:08.6862163+05:00",
+        "key_code":  190,
+        "key_pressed":  ".",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:15.2159496+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:20:19.1465552+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    }
+]

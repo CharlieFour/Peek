@@ -1,0 +1,51 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:04:54.7030786+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:04:55.6658702+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:04:55.8833187+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:05:04.0480059+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:05:06.6550479+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:05:15.6969130+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:05:30.6977929+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    }
+]

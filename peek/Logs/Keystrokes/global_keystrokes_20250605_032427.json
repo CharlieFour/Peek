@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:06.2742210+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:22.5667979+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:22.6398236+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:22.7723581+05:00",
+        "key_code":  76,
+        "key_pressed":  "L",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:22.9051460+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:22.9713029+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:23.0383233+05:00",
+        "key_code":  79,
+        "key_pressed":  "O",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:26.2355907+05:00",
+        "key_code":  8,
+        "key_pressed":  "BACKSPACE",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:26.3135935+05:00",
+        "key_code":  8,
+        "key_pressed":  "BACKSPACE",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:24:27.4114034+05:00",
+        "key_code":  79,
+        "key_pressed":  "O",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    }
+]

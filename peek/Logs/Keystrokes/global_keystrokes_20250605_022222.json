@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:21.0153155+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:21.5603981+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:21.6302600+05:00",
+        "key_code":  79,
+        "key_pressed":  "O",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:22.1631710+05:00",
+        "key_code":  82,
+        "key_pressed":  "R",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:22.2301576+05:00",
+        "key_code":  82,
+        "key_pressed":  "R",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:22.2981267+05:00",
+        "key_code":  75,
+        "key_pressed":  "K",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:22.5023379+05:00",
+        "key_code":  73,
+        "key_pressed":  "I",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:22.5723420+05:00",
+        "key_code":  78,
+        "key_pressed":  "N",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:22.6413412+05:00",
+        "key_code":  78,
+        "key_pressed":  "N",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:22:22.6413412+05:00",
+        "key_code":  71,
+        "key_pressed":  "G",
+        "window_title":  "chrome - Claude - Google Chrome"
+    }
+]

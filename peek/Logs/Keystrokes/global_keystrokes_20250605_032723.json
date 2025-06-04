@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:22.0687097+05:00",
+        "key_code":  8,
+        "key_pressed":  "BACKSPACE",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:22.2659705+05:00",
+        "key_code":  8,
+        "key_pressed":  "BACKSPACE",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:22.5272839+05:00",
+        "key_code":  8,
+        "key_pressed":  "BACKSPACE",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:22.7253760+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:22.7943753+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:22.7953730+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:22.8603768+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:22.9949862+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:23.0639891+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:27:23.1960202+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "opera - Claude - Opera"
+    }
+]

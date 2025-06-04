@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:29:43.8083605+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "opera - Peek | Supabase Procs | Supabase - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:29:47.4751301+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - "
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:29:50.3974574+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Global PowerShell Keylogger Enhancement - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:29:50.4734580+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Global PowerShell Keylogger Enhancement - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:29:56.6929145+05:00",
+        "key_code":  73,
+        "key_pressed":  "I",
+        "window_title":  "chrome - Global PowerShell Keylogger Enhancement - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:29:56.8259387+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "chrome - Global PowerShell Keylogger Enhancement - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:29:56.8939392+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "chrome - Global PowerShell Keylogger Enhancement - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:29:56.9649491+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "chrome - Global PowerShell Keylogger Enhancement - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:30:02.4576271+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "chrome - Global PowerShell Keylogger Enhancement - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T01:30:02.5246815+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "chrome - Global PowerShell Keylogger Enhancement - Claude - Google Chrome"
+    }
+]

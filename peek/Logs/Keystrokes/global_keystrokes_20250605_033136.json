@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:34.7039055+05:00",
+        "key_code":  78,
+        "key_pressed":  "N",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:34.7849037+05:00",
+        "key_code":  78,
+        "key_pressed":  "N",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:34.8709209+05:00",
+        "key_code":  79,
+        "key_pressed":  "O",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:35.0779104+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:35.1819068+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:35.6089069+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:35.6989178+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:36.6839015+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:36.6849019+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "notepad - *Untitled - Notepad"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:36.7579041+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "notepad - *Untitled - Notepad"
+    }
+]

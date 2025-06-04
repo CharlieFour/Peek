@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:15.0196930+05:00",
+        "key_code":  77,
+        "key_pressed":  "M",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:15.1246952+05:00",
+        "key_code":  77,
+        "key_pressed":  "M",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:16.0271401+05:00",
+        "key_code":  89,
+        "key_pressed":  "Y",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:16.4589162+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:16.7891646+05:00",
+        "key_code":  78,
+        "key_pressed":  "N",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:17.0103370+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:17.1163950+05:00",
+        "key_code":  77,
+        "key_pressed":  "M",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:17.2084809+05:00",
+        "key_code":  77,
+        "key_pressed":  "M",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:17.3971047+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:14:17.5767728+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "opera - Peek - Opera"
+    }
+]

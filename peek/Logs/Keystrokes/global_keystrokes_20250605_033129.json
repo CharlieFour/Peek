@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:23.1741334+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - "
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:23.2761284+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:24.9684152+05:00",
+        "key_code":  74,
+        "key_pressed":  "J",
+        "window_title":  "opera - PEEK: Enhanced Activity Monitor - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:25.0384487+05:00",
+        "key_code":  74,
+        "key_pressed":  "J",
+        "window_title":  "opera - PEEK: Enhanced Activity Monitor - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:25.9122879+05:00",
+        "key_code":  8,
+        "key_pressed":  "BACKSPACE",
+        "window_title":  "opera - PEEK: Enhanced Activity Monitor - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:25.9827448+05:00",
+        "key_code":  8,
+        "key_pressed":  "BACKSPACE",
+        "window_title":  "opera - PEEK: Enhanced Activity Monitor - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:29.5589543+05:00",
+        "key_code":  72,
+        "key_pressed":  "H",
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:29.6459639+05:00",
+        "key_code":  72,
+        "key_pressed":  "H",
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:29.8519550+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:31:29.9169588+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "opera - Speed Dial - Opera"
+    }
+]

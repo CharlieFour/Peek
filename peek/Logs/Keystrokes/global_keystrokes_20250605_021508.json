@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:45.6837347+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:46.0190244+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:47.3158749+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Home - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:49.6431957+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "ApplicationFrameHost - WhatsApp"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:51.5662740+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Home - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:51.6372731+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:53.1193388+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:53.2083484+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:14:58.7011959+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "explorer - Task Switching"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:15:08.5510855+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "chrome - Remix of Fixed Keylogger with Session String - Claude - Google Chrome"
+    }
+]

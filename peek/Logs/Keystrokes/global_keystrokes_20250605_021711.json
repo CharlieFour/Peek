@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:16:56.8733664+05:00",
+        "key_code":  50,
+        "key_pressed":  "2",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:03.2453652+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:03.5223699+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:03.6083679+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:03.9773826+05:00",
+        "key_code":  50,
+        "key_pressed":  "2",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:04.0623633+05:00",
+        "key_code":  50,
+        "key_pressed":  "2",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:05.1953634+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:10.8311775+05:00",
+        "key_code":  81,
+        "key_pressed":  "Q",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:10.9991756+05:00",
+        "key_code":  85,
+        "key_pressed":  "U",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:17:11.0821711+05:00",
+        "key_code":  85,
+        "key_pressed":  "U",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    }
+]

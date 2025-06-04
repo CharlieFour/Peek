@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:41.9051289+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:41.9811283+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:42.1281242+05:00",
+        "key_code":  76,
+        "key_pressed":  "L",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:42.2051299+05:00",
+        "key_code":  76,
+        "key_pressed":  "L",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:42.2776658+05:00",
+        "key_code":  76,
+        "key_pressed":  "L",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:42.4257197+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:42.8567209+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "chrome - New Tab - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:45.6849704+05:00",
+        "key_code":  86,
+        "key_pressed":  "V",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:46.4839699+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "chrome - Claude - Google Chrome"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:52:53.8978744+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "Code - peek.ps1 - Peek - Visual Studio Code [Administrator]"
+    }
+]

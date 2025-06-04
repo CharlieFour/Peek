@@ -1,0 +1,72 @@
+﻿[
+    {
+        "key_pressed":  "M",
+        "processed_key":  "m",
+        "timestamp":  "2025-06-05T03:14:26.9525246+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  77,
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "key_pressed":  "Y",
+        "processed_key":  "y",
+        "timestamp":  "2025-06-05T03:14:27.2325476+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  89,
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "key_pressed":  "SPACE",
+        "processed_key":  " ",
+        "timestamp":  "2025-06-05T03:14:27.4439310+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  32,
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "key_pressed":  "N",
+        "processed_key":  "n",
+        "timestamp":  "2025-06-05T03:14:27.6981421+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  78,
+        "window_title":  "opera - Speed Dial - Opera"
+    },
+    {
+        "key_pressed":  "A",
+        "processed_key":  "a",
+        "timestamp":  "2025-06-05T03:14:27.7947070+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  65,
+        "window_title":  "opera - Speed Dial - Opera"
+    }
+]

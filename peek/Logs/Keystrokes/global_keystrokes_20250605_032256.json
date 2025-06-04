@@ -1,0 +1,44 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:20:41.4179025+05:00",
+        "key_code":  71,
+        "key_pressed":  "G",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:20:41.4849052+05:00",
+        "key_code":  71,
+        "key_pressed":  "G",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:20:41.6319028+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:20:41.7049018+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:20:41.7729010+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "opera - Claude - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T03:22:56.1132404+05:00",
+        "key_code":  67,
+        "key_pressed":  "C",
+        "window_title":  "opera - Optimizing Keystroke Capture Performance - Claude - Opera"
+    }
+]

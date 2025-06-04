@@ -1,0 +1,4 @@
+﻿=== SESSION BUFFER (Length: 20) ===
+my  notep
+namme s ly
+=== END BUFFER ===

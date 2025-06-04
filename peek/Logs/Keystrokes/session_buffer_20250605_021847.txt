@@ -1,0 +1,3 @@
+﻿=== SESSION BUFFER (Length: 21) ===
+	naame is la..k..aa m
+=== END BUFFER ===

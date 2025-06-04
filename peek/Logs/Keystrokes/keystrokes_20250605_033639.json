@@ -1,0 +1,72 @@
+﻿[
+    {
+        "key_pressed":  "N",
+        "processed_key":  "",
+        "timestamp":  "2025-06-05T03:36:38.5243307+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  78,
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "key_pressed":  "A",
+        "processed_key":  "",
+        "timestamp":  "2025-06-05T03:36:38.6703343+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  65,
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "key_pressed":  "M",
+        "processed_key":  "",
+        "timestamp":  "2025-06-05T03:36:38.8083340+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  77,
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "key_pressed":  "E",
+        "processed_key":  "",
+        "timestamp":  "2025-06-05T03:36:38.9753560+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  69,
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "key_pressed":  "SPACE",
+        "processed_key":  "",
+        "timestamp":  "2025-06-05T03:36:39.1193332+05:00",
+        "device_id":  "TECHNOMANCER-Shop",
+        "modifiers":  {
+                          "capslock":  false,
+                          "alt":  false,
+                          "ctrl":  false,
+                          "shift":  false
+                      },
+        "key_code":  32,
+        "window_title":  "opera - Peek - Opera"
+    }
+]

@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:45.3423461+05:00",
+        "key_code":  77,
+        "key_pressed":  "M",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:46.5179956+05:00",
+        "key_code":  89,
+        "key_pressed":  "Y",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:47.7369991+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:47.8230032+05:00",
+        "key_code":  32,
+        "key_pressed":  "SPACE",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:50.2019972+05:00",
+        "key_code":  78,
+        "key_pressed":  "N",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:50.4229948+05:00",
+        "key_code":  79,
+        "key_pressed":  "O",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:50.5711284+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:50.8681142+05:00",
+        "key_code":  69,
+        "key_pressed":  "E",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:51.3136579+05:00",
+        "key_code":  80,
+        "key_pressed":  "P",
+        "window_title":  "SearchApp - Search"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:19:51.8392880+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "SearchApp - Search"
+    }
+]

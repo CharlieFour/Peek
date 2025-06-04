@@ -1,0 +1,30 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:13:03.1641180+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - did max verstappen get a penalty in spanish gp - Google Search - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:13:03.2441218+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:13:18.4290709+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "opera - Enhanced Educational Monitor Dashboard - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T02:13:21.1323269+05:00",
+        "key_code":  87,
+        "key_pressed":  "W",
+        "window_title":  "SearchApp - Search"
+    }
+]
