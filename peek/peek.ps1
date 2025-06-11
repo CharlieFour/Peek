@@ -205,7 +205,7 @@ function Get-DeviceInfo {
         $deviceInfo = @{
             id = "$env:COMPUTERNAME-$env:USERNAME"
             hostname = $env:COMPUTERNAME
-            ip_address = $ipAddress -or "Unknown"
+            ip_address = if ($ipAddress) { $ipAddress } else { "Unknown" }
             os = "$($operatingSystem.Caption) $($operatingSystem.Version)"
             processor = $processor.Name.Trim()
             memory_gb = [math]::Round(($memory.Sum / 1GB), 2)
@@ -217,6 +217,7 @@ function Get-DeviceInfo {
             created_at = (Get-Date).ToString("o")
             updated_at = (Get-Date).ToString("o")
         }
+        
         
         return $deviceInfo
     }
@@ -294,7 +295,7 @@ function Start-DeviceInfoUpdater {
                 return @{
                     id = "$env:COMPUTERNAME-$env:USERNAME"
                     hostname = $env:COMPUTERNAME
-                    ip_address = $ipAddress -or "Unknown"
+                    ip_address = if ($ipAddress) { $ipAddress } else { "Unknown" }
                     os = "$($operatingSystem.Caption) $($operatingSystem.Version)"
                     processor = $processor.Name.Trim()
                     memory_gb = [math]::Round(($memory.Sum / 1GB), 2)
