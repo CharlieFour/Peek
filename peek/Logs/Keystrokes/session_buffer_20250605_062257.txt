@@ -1,0 +1,3 @@
+﻿=== SESSION BUFFER (Length: 30) ===
+	iiiiiiillsss     mmmee		ssstt
+=== END BUFFER ===

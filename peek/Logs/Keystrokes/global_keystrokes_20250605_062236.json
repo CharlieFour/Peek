@@ -1,0 +1,72 @@
+﻿[
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:29.0382188+05:00",
+        "key_code":  89,
+        "key_pressed":  "Y",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:29.4925869+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:29.5575779+05:00",
+        "key_code":  13,
+        "key_pressed":  "ENTER",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:33.4943291+05:00",
+        "key_code":  9,
+        "key_pressed":  "TAB",
+        "window_title":  "opera - Peek - Opera"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:35.8611648+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:35.9303306+05:00",
+        "key_code":  83,
+        "key_pressed":  "S",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:36.2712452+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:36.3402507+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:36.4106856+05:00",
+        "key_code":  84,
+        "key_pressed":  "T",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    },
+    {
+        "device_id":  "TECHNOMANCER-Shop",
+        "timestamp":  "2025-06-05T06:22:36.5495132+05:00",
+        "key_code":  65,
+        "key_pressed":  "A",
+        "window_title":  "Code - KeystrokeCapture.cs - Peek - Visual Studio Code [Administrator]"
+    }
+]
